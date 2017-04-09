@@ -53,7 +53,7 @@ class CallsignsController < ApplicationController
   private
 
     def set_callsign
-      @callsign = current_user.callsigns.find(params[:id])
+      @callsign = current_user.callsigns.friendly.find(params[:id])
       rescue ActiveRecord::RecordNotFound
         redirect_to(callsigns_url, :notice => 'Record not found')
     end

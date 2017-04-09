@@ -14,5 +14,7 @@ Rails.application.routes.draw do
     get '/settings' => 'users/registrations#edit'
   end
 
-  resources :callsigns
+  resources :callsigns do
+    resources :tracks
+  end
 end
