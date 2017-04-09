@@ -1,0 +1,8 @@
+<h1>Editing Track</h1>
+
+<%= form_for @track, url: callsign_track_path(id:@track), multipart: true, html: { class: "", method: :patch } do |f| %>
+<%= render partial: 'form', locals: {f: f, track: @track} %>
+<% end %>
+
+<%= link_to 'Show', callsign_track_path(@track) %> |
+<%= link_to 'Back', callsign_tracks_path %>

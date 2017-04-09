@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Tracks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tracks.each do |track| %>
+      <tr>
+        <td><%= track.callsign.callsign %></td>
+        <td><%= track.method %></td>
+        <td><%= track.date_in.strftime("%d %B %Y") %></td>
+        <td><%= track.date_out.strftime("%d %B %Y") if track.date_out? %></td>
+        <td><%= track.status %></td>
+        <td><%= link_to 'Show', callsign_track_path(id:track) %></td>
+        <td><%= link_to 'Edit', edit_callsign_track_path(id:track) %></td>
+        <td><%= link_to 'Destroy', callsign_track_path(id:track), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Track', new_callsign_track_path %>

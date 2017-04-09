@@ -1,0 +1,8 @@
+<p><%= @track.callsign.callsign %></p>
+<p><%= @track.method %></p>
+<p><%= @track.date_in.strftime("%d %B %Y") %></p>
+<p><%= @track.date_out.strftime("%d %B %Y") if @track.date_out? %></p>
+<p><%= @track.status %></p>
+
+<%= link_to 'Edit', edit_callsign_track_path(id:@track) %> |
+<%= link_to 'Back', callsign_tracks_path %>
