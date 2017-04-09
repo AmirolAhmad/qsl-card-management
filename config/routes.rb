@@ -13,4 +13,6 @@ Rails.application.routes.draw do
     get '/register' => 'users/registrations#new'
     get '/settings' => 'users/registrations#edit'
   end
+
+  resources :callsigns
 end

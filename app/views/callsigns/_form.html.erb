@@ -1,0 +1,21 @@
+<%= form_for(callsign) do |f| %>
+  <% if callsign.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(callsign.errors.count, "error") %> prohibited this callsign from being saved:</h2>
+
+      <ul>
+      <% callsign.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="">
+    <%= f.text_field :callsign %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
