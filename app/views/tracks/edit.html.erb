@@ -1,8 +1,10 @@
-<h1>Editing Track</h1>
+<div class="page-header">
+  <h1>Editing QSL Card Track for <%= @callsign.callsign.upcase %></h1>
+</div>
 
-<%= form_for @track, url: callsign_track_path(id:@track), multipart: true, html: { class: "", method: :patch } do |f| %>
-<%= render partial: 'form', locals: {f: f, track: @track} %>
+<%= form_for @track, url: callsign_track_path(id:@track), multipart: true, html: { class: "form-horizontal", method: :patch } do |f| %>
+  <%= render partial: 'form', locals: {f: f, track: @track} %>
 <% end %>
 
-<%= link_to 'Show', callsign_track_path(@track) %> |
-<%= link_to 'Back', callsign_tracks_path %>
+<hr>
+<%= link_to 'Show', callsign_track_path(@callsign), class: "btn btn-default" %>

@@ -1,7 +1,7 @@
 <% if @track.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@track.errors.count, "error") %> prohibited this track from being saved:</h2>
-
+  <div class="alert alert-danger alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <strong><%= pluralize(@track.errors.count, "error") %> prohibited this track from being saved:</strong>
     <ul>
     <% @track.errors.full_messages.each do |message| %>
       <li><%= message %></li>
@@ -10,10 +10,44 @@
   </div>
 <% end %>
 
-<div class="">
-  <%= f.date_field :date_in %>
+<div class="form-group">
+  <%= f.label :call, "Station Callsign", class: "col-sm-2 control-label" %>
+  <div class="col-sm-10">
+    <%= f.text_field :call, class: "form-control", placeholder: "Enter station callsign" %>
+  </div>
 </div>
 
-<div class="actions">
-  <%= f.submit %>
+<div class="form-group">
+  <%= f.label :method, class: "col-sm-2 control-label" %>
+  <div class="col-sm-10">
+    <%= f.select :method, Track::METHOD_OPTIONS, { prompt: "-- Choose method" }, { class: 'form-control' }  %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="form-group method" id="TKS">
+      <%= f.label :date_in, class: "col-sm-4 control-label" %>
+      <div class="col-sm-8">
+        <%= f.date_field :date_in, class: "form-control", placeholder: "Enter QSL Card Date In" %>
+        <small><span class="help-block">This is required if you choose TKS QSL method above</span></small>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="form-group method" id="PSE">
+      <%= f.label :date_out, class: "col-sm-4 control-label" %>
+      <div class="col-sm-8">
+        <%= f.date_field :date_out, class: "form-control", placeholder: "Enter QSL Card Date Out" %>
+        <small><span class="help-block">This is required if you choose PSE QSL method above</span></small>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="col-sm-offset-2 col-sm-10">
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+    <%= link_to 'Cancel', callsign_tracks_path, class: "btn btn-link" %>
+  </div>
 </div>

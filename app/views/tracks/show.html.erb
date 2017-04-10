@@ -1,8 +1,40 @@
-<p><%= @track.callsign.callsign %></p>
-<p><%= @track.method %></p>
-<p><%= @track.date_in.strftime("%d %B %Y") %></p>
-<p><%= @track.date_out.strftime("%d %B %Y") if @track.date_out? %></p>
-<p><%= @track.status %></p>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    QSL Card for <%= @track.callsign.callsign.upcase %> & <%= @track.call.upcase %>
+  </div>
+  <div class="panel-body">
+    <table class="table table-bordered table-striped">
+      <tbody>
+        <tr>
+          <th class="col-md-2">My Callsign</th>
+          <td><%= @track.callsign.callsign.upcase %></td>
+        </tr>
+        <tr>
+          <th>Station Callsign</th>
+          <td><%= @track.call.upcase %></td>
+        </tr>
+        <tr>
+          <th>Method</th>
+          <td><%= @track.method %> QSL</td>
+        </tr>
+        <tr>
+          <th>Date In</th>
+          <td><%= @track.date_in.strftime("%d %B %Y") if @track.date_in? %></td>
+        </tr>
+        <tr>
+          <th>Date Out</th>
+          <td><%= @track.date_out.strftime("%d %B %Y") if @track.date_out? %></td>
+        </tr>
+        <tr>
+          <th>Status</th>
+          <td><%= check_status(@track) %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 
-<%= link_to 'Edit', edit_callsign_track_path(id:@track) %> |
-<%= link_to 'Back', callsign_tracks_path %>
+<div class="btn-group">
+  <%= link_to 'Edit', edit_callsign_track_path(id:@track), class: "btn btn-primary" %>
+  <%= link_to 'Back', callsign_tracks_path, class: "btn btn-default" %>
+</div>

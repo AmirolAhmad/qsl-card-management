@@ -1,6 +1,6 @@
 class TracksController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_callsign, only: [:index, :show, :edit, :create, :update, :destroy]
+  before_action :set_callsign, only: [:index, :new, :show, :edit, :create, :update, :destroy]
   before_action :set_track, only: [:index, :show, :edit, :create, :update, :destroy]
   before_action :find_track, only: [:show, :edit, :update, :destroy]
 
@@ -69,6 +69,6 @@ class TracksController < ApplicationController
     end
 
     def track_params
-      params.require(:track).permit(:callsign_id, :method, :date_in, :date_out, :status)
+      params.require(:track).permit(:callsign_id, :method, :date_in, :date_out, :status, :call)
     end
 end

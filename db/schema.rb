@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170409161834) do
+ActiveRecord::Schema.define(version: 20170410073604) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,12 +40,13 @@ ActiveRecord::Schema.define(version: 20170409161834) do
 
   create_table "tracks", force: :cascade do |t|
     t.integer  "callsign_id"
-    t.integer  "method"
     t.date     "date_in"
     t.date     "date_out"
     t.integer  "status",      default: 0, null: false
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.string   "call"
+    t.string   "method"
     t.index ["callsign_id"], name: "index_tracks_on_callsign_id", using: :btree
   end
 

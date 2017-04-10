@@ -9,6 +9,7 @@
     <tr>
       <th class="col-md-1">No</th>
       <th>Callsign</th>
+      <th class="col-md-2">Track</th>
       <th colspan="2" class="col-md-2">Action</th>
     </tr>
   </thead>
@@ -17,6 +18,7 @@
       <tr>
         <td><%= index + 1 %></td>
         <td><%= callsign.callsign.upcase %></td>
+        <td><%= link_to "Track QSL Card", callsign_tracks_path(callsign), class: "btn btn-default btn-xs btn-block" %></td>
         <td><%= link_to 'Edit', edit_callsign_path(callsign), class: "btn btn-warning btn-xs btn-block" %></td>
         <td><%= link_to 'Destroy', callsign, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs btn-block" %></td>
       </tr>
