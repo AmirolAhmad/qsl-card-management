@@ -18,7 +18,7 @@ class CallsignsController < ApplicationController
 
     respond_to do |format|
       if @callsign.save
-        format.html { redirect_to @callsign, notice: 'Callsign was successfully created.' }
+        format.html { redirect_to callsigns_url, notice: 'Callsign was successfully created.' }
         format.json { render :show, status: :created, location: @callsign }
       else
         format.html { render :new }
@@ -30,7 +30,7 @@ class CallsignsController < ApplicationController
   def update
     respond_to do |format|
       if @callsign.update(callsign_params)
-        format.html { redirect_to @callsign, notice: 'Callsign was successfully updated.' }
+        format.html { redirect_to callsigns_url, notice: 'Callsign was successfully updated.' }
         format.json { render :show, status: :ok, location: @callsign }
       else
         format.html { render :edit }
