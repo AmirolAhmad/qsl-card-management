@@ -15,6 +15,10 @@ Rails.application.routes.draw do
   end
 
   resources :callsigns, except: :show do
-    resources :tracks
+    resources :tracks do
+      member do
+        patch 'complete' => 'tracks#complete'
+      end
+    end
   end
 end

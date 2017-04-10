@@ -1,8 +1,8 @@
 class TracksController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_callsign, only: [:index, :new, :show, :edit, :create, :update, :destroy]
-  before_action :set_track, only: [:index, :show, :edit, :create, :update, :destroy]
-  before_action :find_track, only: [:show, :edit, :update, :destroy]
+  before_action :set_callsign, only: [:index, :new, :show, :edit, :create, :update, :destroy, :complete]
+  before_action :set_track, only: [:index, :show, :edit, :create, :update, :destroy, :complete]
+  before_action :find_track, only: [:show, :edit, :update, :destroy, :complete]
 
   def index
   end
@@ -47,6 +47,19 @@ class TracksController < ApplicationController
     respond_to do |format|
       format.html { redirect_to callsign_tracks_url, notice: 'Track was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def complete
+    respond_to do |format|
+      if @track.update(track_params)
+        @track.update_attributes(status: 1)
+        format.html { redirect_to callsign_track_path(id:@track), notice: 'Track was successfully mark as completed.' }
+        format.json { render :show, status: :ok, location: @track }
+      else
+        format.html { render :edit }
+        format.json { render json: @track.errors, status: :unprocessable_entity }
+      end
     end
   end
 
