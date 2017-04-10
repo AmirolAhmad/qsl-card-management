@@ -1,8 +1,8 @@
-<%= form_for(callsign) do |f| %>
+<%= form_for callsign, multipart: true, html: { class: "form-horizontal" } do |f| %>
   <% if callsign.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(callsign.errors.count, "error") %> prohibited this callsign from being saved:</h2>
-
+    <div class="alert alert-danger alert-dismissable">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <strong><%= pluralize(callsign.errors.count, "error") %> prohibited this callsign from being saved:</strong>
       <ul>
       <% callsign.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -11,11 +11,16 @@
     </div>
   <% end %>
 
-  <div class="">
-    <%= f.text_field :callsign %>
+  <div class="form-group">
+    <%= f.label :callsign, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :callsign, class: "form-control", placeholder: "Enter the callsign" %>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.submit "Submit", class: "btn btn-primary" %>
+    </div>
   </div>
 <% end %>

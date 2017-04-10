@@ -1,12 +1,9 @@
 class CallsignsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_callsign, only: [:show, :edit, :update, :destroy]
+  before_action :set_callsign, only: [:edit, :update, :destroy]
 
   def index
     @callsigns = current_user.callsigns
-  end
-
-  def show
   end
 
   def new
